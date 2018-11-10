@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ArvidsBowling.Data;
+using ArvidsBowling.Models;
+using ArvidsBowling.Models.Home;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ArvidsBowling.Models;
 
 namespace ArvidsBowling.Controllers
 {
@@ -12,7 +12,16 @@ namespace ArvidsBowling.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new List<CustomerInfoVM>();
+            var repo = BankRepository.Instance();
+            var accounts = repo.Accounts;
+
+            foreach (var customer in repo.Customers)
+            {
+                var customerAccounts = accounts.Where(a => a.CustomerId == customer.Id).ToList();
+                model.Add(new CustomerInfoVM() { Customer = customer, Accounts = customerAccounts });
+            }
+            return View(model);
         }
 
         public IActionResult About()
