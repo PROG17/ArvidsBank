@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ArvidsBowling.Data
 {
@@ -34,5 +36,42 @@ namespace ArvidsBowling.Data
 
         public IList<Account> Accounts { get => _accounts; }
         public IList<Customer> Customers { get => _customers; }
+
+        public void Deposit(Account account, decimal amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Belopp måste vara större än noll");
+            }
+
+            account.Balance += amount;
+        }
+
+        public void Withdrawal(Account account, decimal amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Belopp måste vara större än noll");
+            }
+
+            if (account.Balance < amount)
+            {
+                throw new Exception("Inte tillräckligt med pengar på kontot");
+            }
+
+            account.Balance -= amount;
+        }
+
+        public Account GetAccount(string accountNum)
+        {
+            var account = _accounts.FirstOrDefault(a => a.AccountNr == accountNum);
+            if (account == null)
+            {
+                throw new NullReferenceException("Ett korrekt konto angavs ej");
+            }
+
+            return account;
+        }
+        
     }
 }

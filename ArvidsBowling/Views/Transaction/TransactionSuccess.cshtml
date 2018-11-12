@@ -1,0 +1,27 @@
+﻿@model ArvidsBank.Models.Transaction.AccountVM
+
+@{
+    ViewData["Title"] = "Transaktion lyckades";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Transaktion lyckades</h1>
+        <table>
+            <tr>
+                <th>Konto</th>
+                <th>Saldo</th>
+            </tr>
+            <tr>
+                <td>@Model.AccountNr</td>
+                <td>@String.Format("{0:N}", @Model.Amount) kr</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br/>
+<br/>
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Tillbaka</a>
+
+
