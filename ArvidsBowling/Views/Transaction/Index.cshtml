@@ -1,0 +1,27 @@
+﻿@using ArvidsBank.Models.Transaction
+@model ArvidsBank.Models.Transaction.TransactionVM
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<form asp-controller="Transaction" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="AccountNum"></label>
+        <input asp-for="AccountNum" class="form-control"/>
+        <span asp-validation-for="AccountNum" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control"/>
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <button type="submit" asp-action="Deposit">Insättning</button>
+    <button type="submit" asp-action="Withdraw" class="pull-right">Uttag</button>
+</form>
+
+<br/>
+<br/>
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Tillbaka</a>
+
