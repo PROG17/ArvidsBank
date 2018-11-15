@@ -1,7 +1,30 @@
-﻿
+﻿@using ArvidsBank.Models.Transaction
+@model ArvidsBank.Models.Transfer.TransferVM
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Transaction";
 }
 
-<h2>Index</h2>
+<form asp-controller="Transfer" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="fromAccountNumber"></label>
+        <input asp-for="fromAccountNumber" class="form-control" />
+        <span asp-validation-for="fromAccountNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="recievingAccountNumber">Till konto</label>
+        <input asp-for="recievingAccountNumber" class="form-control" />
+        <span asp-validation-for="recievingAccountNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <button type="submit" asp-action="Transfer">Överför</button>
+</form>
 
+<br />
+<br />
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Tillbaka</a>

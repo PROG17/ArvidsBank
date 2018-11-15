@@ -1,7 +1,29 @@
-﻿
+﻿@model ArvidsBank.Models.Transfer.TransferVM
 @{
-    ViewData["Title"] = "TransferSuccess";
+    ViewData["Title"] = "Överföring Lyckades";
 }
 
-<h2>TransferSuccess</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Överföring lyckades</h1>
+        <table>
+            <tr>
+                <th>Konto</th>
+                <th>Saldo</th>
+            </tr>
+            <tr>
+                <td>@Model.FromAccount.AccountNr</td>
+                <td>@String.Format("{0:N}", @Model.FromAccount.Amount) kr</td>
+            </tr>
+            <tr>
+                <td>@Model.RecievingAccount.AccountNr</td>
+                <td>@String.Format("{0:N}", @Model.RecievingAccount.Amount)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br />
+<br />
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Tillbaka</a>
 
