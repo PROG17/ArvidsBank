@@ -72,6 +72,11 @@ namespace ArvidsBowling.Data
 
             return account;
         }
+
+        public void Transfer(Account fromAccount, Account recievingAccount, decimal sum)
+        {
+
+        }
         
     }
 }
