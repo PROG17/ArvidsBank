@@ -28,7 +28,6 @@ namespace ArvidsBank.Controllers
 
                     repo.Transfer(fromAccount,recievingAccount,model.Amount);
 
-                    //var accountVm = AccountVM.Create(account);
                     var transferVM = new TransferVM();
                     transferVM.FromAccount = AccountVM.Create(fromAccount);
                     transferVM.RecievingAccount = AccountVM.Create(recievingAccount);
