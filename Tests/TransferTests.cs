@@ -9,7 +9,7 @@ namespace Tests
     public class TransferTests
     {
         [Fact]
-        public void CorrectAmountTransfered()
+        public void CorrectAmountTransferred()
         {
             var repo = BankRepository.Instance();
             var fromAccount = repo.Accounts[0];
@@ -24,7 +24,7 @@ namespace Tests
         }
 
         [Fact]
-        public void WithdrawlInsufficientFunds()
+        public void WithdrawInsufficientFunds()
         {
             var repo = BankRepository.Instance();
             var fromAccount = repo.Accounts[0];
