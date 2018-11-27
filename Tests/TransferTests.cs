@@ -16,8 +16,8 @@ namespace Tests
             var recievingAccount = repo.Accounts[1];
 
             decimal transfer = 100;
-            var expectedFrom = 900;
-            var expetedTo = 90100;
+            var expectedFrom = fromAccount.Balance-transfer;
+            var expetedTo = recievingAccount.Balance+transfer;
             repo.Transfer(fromAccount,recievingAccount,100);
             Assert.Equal(expectedFrom, fromAccount.Balance);
             Assert.Equal(expetedTo, recievingAccount.Balance);
